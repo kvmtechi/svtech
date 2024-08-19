@@ -1797,7 +1797,7 @@ function Home() {
       <section
         id="about"
         className={`bg-gray-1 ${
-          darkMode ? "bg-black text-white" : "bg-white text-black"
+          darkMode ? "bg-dark text-white" : "bg-white text-black"
         } pb-8 pt-20  lg:pb-[70px] lg:pt-[120px]`}
       >
         <div className="container">
@@ -2064,7 +2064,7 @@ function Home() {
       </section>
       <section
         class={`"${
-          darkMode ? " text-white bg-black" : "bg-primary text-white"
+          darkMode ? " text-white bg-dark" : "bg-primary text-white"
         } dark:bg-dark"`}
       >
         <div class="container px-4">
@@ -2110,12 +2110,17 @@ function Home() {
               alt="graygrids"
               class="hidden dark:block"
             />
+            <img
+              src="/assets/images/logo/concordant.png"
+              alt="concordant"
+              class="w-44 h-16"
+            />
           </div>
         </div>
       </section>
       <section
         className={`relative z-20 overflow-hidden bg-white pb-8 pt-20 ${
-          darkMode ? "bg-black text-primary" : "bg-white text-black"
+          darkMode ? "bg-dark text-primary" : "bg-white text-black"
         } lg:pb-[50px] lg:pt-[120px]`}
       >
         <div className="container mx-auto">
