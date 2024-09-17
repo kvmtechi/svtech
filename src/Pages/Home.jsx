@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Home() {
   const [darkMode, setDarkMode] = useState(false);
@@ -8,6 +9,25 @@ function Home() {
   };
   const menuToggler = () => {
     setmenu(!menu);
+  };
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/email/sendEmail", {
+        email,
+        subject: `Message from ${fullName}`,
+        message: `Phone: ${phone}\n\nMessage: ${message}`,
+      });
+      alert(response.data);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send email.");
+    }
   };
   return (
     <>
@@ -2079,9 +2099,9 @@ function Home() {
             />
 
             <img
-              src="/assets/images/logo/mezocliq-1.png"
+              src="/assets/images/logo/ldt.png"
               alt="lineicons"
-              class="dark:hidden"
+              class="dark:hidden w-64"
             />
             <img
               src="/assets/images/logo/zimble_code.png"
