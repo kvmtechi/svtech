@@ -1,10 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-<<<<<<< HEAD
   "type": "module",
-=======
->>>>>>> ec9ff6ddb505e710ea1f18e40a02ebd8f2e67b17
   "description": "",
   "main": "server.js",
   "scripts": {
