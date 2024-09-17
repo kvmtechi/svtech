@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Home() {
   const [darkMode, setDarkMode] = useState(false);
@@ -8,6 +9,41 @@ function Home() {
   };
   const menuToggler = () => {
     setmenu(!menu);
+  };
+
+  const [Details, setDetails] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(Details);
+    // console.log(
+    //   `Message from ${(Details.fullName, "with email " + Details.email)}`,
+    //   `Phone: ${Details.phone}\n\nMessage: ${Details.message}`
+    // );
+    try {
+      const response = await axios.post("http://localhost:3000/email/send", {
+        fullName: Details.fullName,
+        phone: Details.phone,
+        email: Details.email,
+        message: Details.message,
+      });
+      alert(response.data);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send email.");
+    }
   };
   return (
     <>
@@ -2079,9 +2115,9 @@ function Home() {
             />
 
             <img
-              src="/assets/images/logo/mezocliq-1.png"
+              src="/assets/images/logo/ldt.png"
               alt="lineicons"
-              class="dark:hidden"
+              class="dark:hidden w-64"
             />
             <img
               src="/assets/images/logo/zimble_code.png"
@@ -3042,6 +3078,9 @@ function Home() {
                       Full Name*
                     </label>
                     <input
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
                       type="text"
                       name="fullName"
                       placeholder="Adam Gelius"
@@ -3056,6 +3095,9 @@ function Home() {
                       Email*
                     </label>
                     <input
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
                       type="email"
                       name="email"
                       placeholder="example@yourmail.com"
@@ -3070,6 +3112,9 @@ function Home() {
                       Phone*
                     </label>
                     <input
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
                       type="text"
                       name="phone"
                       placeholder="+885 1254 5211 552"
@@ -3084,6 +3129,9 @@ function Home() {
                       Message*
                     </label>
                     <textarea
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
                       name="message"
                       rows="1"
                       placeholder="type your message here"
@@ -3092,6 +3140,7 @@ function Home() {
                   </div>
                   <div className="mb-0">
                     <button
+                      onClick={handleSubmit}
                       type="submit"
                       className="inline-flex items-center justify-center rounded-md bg-primary px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-blue-dark"
                     >
