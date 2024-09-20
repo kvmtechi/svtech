@@ -24,8 +24,8 @@ export const sendEmail = expressAsyncHandler(async (req, res) => {
     }
 
     const mailOptions = {
-      from: process.env.SMTP_MAIL,
-      to: email,
+      from: email,
+      to: process.env.SMTP_MAIL,
       subject, // Use the constructed subject
       text: `Message from ${fullName}:\n\n${message}\n\nPhone: ${phone}`, // Include full name and phone in message body
     };

@@ -33,13 +33,13 @@ function Home() {
     //   `Phone: ${Details.phone}\n\nMessage: ${Details.message}`
     // );
     try {
-      const response = await axios.post("http://localhost:3000/email/send", {
+      const response = await axios.post("http://localhost:8000/email/send", {
         fullName: Details.fullName,
         phone: Details.phone,
         email: Details.email,
         message: Details.message,
       });
-      alert(response.data);
+      alert("Mail sent successfully");
     } catch (error) {
       console.error(error);
       alert("Failed to send email.");
@@ -3084,6 +3084,7 @@ function Home() {
                       type="text"
                       name="fullName"
                       placeholder="Adam Gelius"
+                      required
                       className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-dark-6"
                     />
                   </div>
@@ -3100,6 +3101,7 @@ function Home() {
                       }}
                       type="email"
                       name="email"
+                      required
                       placeholder="example@yourmail.com"
                       className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-dark-6"
                     />
@@ -3115,6 +3117,7 @@ function Home() {
                       onChange={(e) => {
                         handleChange(e);
                       }}
+                      required
                       type="text"
                       name="phone"
                       placeholder="+885 1254 5211 552"
@@ -3132,6 +3135,7 @@ function Home() {
                       onChange={(e) => {
                         handleChange(e);
                       }}
+                      required
                       name="message"
                       rows="1"
                       placeholder="type your message here"
