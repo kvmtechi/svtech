@@ -33,7 +33,7 @@ function Home() {
     //   `Phone: ${Details.phone}\n\nMessage: ${Details.message}`
     // );
     try {
-      const response = await axios.post("/api/email/send", {
+      const response = await axios.post("https://localhost:3000/email/send", {
         fullName: Details.fullName,
         phone: Details.phone,
         email: Details.email,
